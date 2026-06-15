@@ -11,3 +11,35 @@
 
     TODO: build the form here.
 --}}
+
+@extends('layouts.app')
+
+@section('your-title', 'Create Department')
+
+@section('content')
+<div class="container">
+    <h1>Create New Department</h1>
+
+    <x-card>
+        <x-form action="{{ route('departments.store') }}" method="POST">
+            @csrf
+
+            <x-form-input
+                name="name"
+                label="Department Name"
+                type="text"
+                placeholder="e.g. Computer Science"
+            />
+
+            <x-form-input
+                name="ID"
+                label="Department ID"
+                type="text"
+                placeholder="e.g. 5"
+            />
+
+            <x-button type="regular">Save Department</x-button>
+        </x-form>
+    </x-card>
+</div>
+@endsection

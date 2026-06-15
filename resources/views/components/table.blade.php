@@ -1,15 +1,23 @@
-<div style="overflow-x: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(11, 45, 35, 0.05); margin-top: 15px;">
-    <table style="width: 100%; border-collapse: collapse; background-color: #ffffff; text-align: right; direction: rtl; font-size: 14px;">
-        
+@props([
+    'rtl' => false,
+])
+
+<div class="table-wrapper" style="overflow-x: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(11, 45, 35, 0.08); margin-top: 15px; border: 1px solid #e5e7eb;">
+    <table style="
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #ffffff;
+        text-align: {{ $rtl ? 'right' : 'left' }};
+        direction: {{ $rtl ? 'rtl' : 'ltr' }};
+        font-size: 14px;
+    ">
         <thead>
-            <tr style="background: linear-gradient(135deg, #0b2d23, #0d3d2b); color: #f0faf5;">
+            <tr style="background: linear-gradient(135deg, #1a1500, #2e2400); color: #ffffff;">
                 {{ $thead }}
             </tr>
         </thead>
-        
         <tbody>
             {{ $slot }}
         </tbody>
-
     </table>
 </div>

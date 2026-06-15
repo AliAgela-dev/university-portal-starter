@@ -44,3 +44,5 @@ Route::get('/', function () {
 Route::get('/layout', function () {
     return view('layouts.app');
 })->name('layouts');
+
+Route::resource('departments', DepartmentController::class);
