@@ -1,16 +1,16 @@
 /* Header */
 header {
-    background: linear-gradient(135deg, #0b2d23 0%, #0d3528 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    border-bottom: 2px solid rgba(110, 231, 183, 0.4);
+    border-bottom: 2px solid rgba(242, 179, 61, 0.4);
 }
 
 .logo a {
-    color: #f0faf5;
+    color: #ffffff;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
@@ -23,7 +23,7 @@ nav {
 }
 
 nav a {
-    color: rgba(110, 231, 183, 0.85);
+    color: rgba(242, 179, 61, 0.85);
     text-decoration: none;
     font-weight: 500;
     padding: 6px 14px;
@@ -32,18 +32,18 @@ nav a {
 }
 
 nav a:hover {
-    color: #f0faf5;
-    background: rgba(5, 150, 105, 0.2);
+    color: #ffffff;
+    background: rgba(242, 179, 61, 0.2);
 }
 
 nav a.active {
-    color: #6ee7b7;
-    background: rgba(5, 150, 105, 0.15);
-    border-bottom: 2px solid #6ee7b7;
+    color: #F2B33D;
+    background: rgba(242, 179, 61, 0.15);
+    border-bottom: 2px solid #F2B33D;
 }
 
 body {
-    background-color: #ecfdf5;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -56,9 +56,9 @@ main, .content-wrapper {
 
 /* Footer */
 footer {
-    background: linear-gradient(135deg, #065f46 0%, #0b2d23 100%);
-    color: #d1fae5;
-    border-top: 2px solid rgba(110, 231, 183, 0.25);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    color: #f5f5f5;
+    border-top: 2px solid rgba(242, 179, 61, 0.25);
     padding: 40px 40px 0;
     margin-top: 40px;
 }
@@ -76,7 +76,7 @@ footer {
 .footer-logo {
     font-size: 1.15rem;
     font-weight: 700;
-    color: #f0faf5;
+    color: #ffffff;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -84,13 +84,13 @@ footer {
 }
 
 .footer-logo i {
-    color: #6ee7b7;
+    color: #F2B33D;
     font-size: 1.2rem;
 }
 
 .footer-desc {
     font-size: 12.5px;
-    color: rgba(209, 250, 229, 0.55);
+    color: rgba(245, 245, 245, 0.55);
     line-height: 1.8;
     margin: 0;
 }
@@ -99,7 +99,7 @@ footer {
 .footer-divider {
     width: 1px;
     height: 70px;
-    background: rgba(110, 231, 183, 0.2);
+    background: rgba(242, 179, 61, 0.2);
 }
 
 /* Team */
@@ -111,7 +111,7 @@ footer {
     font-size: 11px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(209, 250, 229, 0.5);
+    color: rgba(245, 245, 245, 0.5);
     margin-bottom: 12px;
 }
 
@@ -126,9 +126,9 @@ footer {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(5, 150, 105, 0.25);
-    border: 1.5px solid rgba(110, 231, 183, 0.35);
-    color: #6ee7b7;
+    background: rgba(242, 179, 61, 0.18);
+    border: 1.5px solid rgba(242, 179, 61, 0.4);
+    color: #F2B33D;
     font-size: 11px;
     font-weight: 600;
     display: flex;
@@ -139,19 +139,19 @@ footer {
 
 .footer-names {
     font-size: 12.5px;
-    color: rgba(209, 250, 229, 0.6);
+    color: rgba(245, 245, 245, 0.6);
     letter-spacing: 0.5px;
 }
 
 /* Bottom Bar */
 .footer-bar {
-    border-top: 1px solid rgba(110, 231, 183, 0.12);
+    border-top: 1px solid rgba(242, 179, 61, 0.12);
     padding: 14px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 12.5px;
-    color: rgba(209, 250, 229, 0.45);
+    color: rgba(245, 245, 245, 0.45);
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -160,14 +160,14 @@ footer {
     display: flex;
     align-items: center;
     gap: 6px;
-    color: rgba(209, 250, 229, 0.55);
+    color: rgba(245, 245, 245, 0.55);
     text-decoration: none;
     font-size: 13px;
     transition: all 0.25s ease;
 }
 
 .footer-bar a:hover {
-    color: #6ee7b7;
+    color: #F2B33D;
     gap: 8px;
 }
 
@@ -193,7 +193,7 @@ footer {
     transform: scale(0.97);
 }
 
-/* Create — green */
+/* Create — base */
 .custome-btn {
     display: inline-flex;
     align-items: center;
@@ -212,73 +212,74 @@ footer {
     transform: scale(0.96);
 }
 
-/* Create — emerald */
+/* Create — amber/yellow */
 .btn-create {
-    background-color: #10B981;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+    background-color: #F2B33D;
+    color: #0a0a0a;
+    box-shadow: 0 4px 12px rgba(242, 179, 61, 0.35);
 }
 .btn-create:hover {
-    background-color: #059669;
-    color: #ffffff;
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.45);
+    background-color: #D99A26;
+    color: #0a0a0a;
+    box-shadow: 0 6px 16px rgba(242, 179, 61, 0.45);
     transform: translateY(-1px);
 }
 
-/* Edit — indigo */
+/* Edit — dark grey */
 .btn-edit {
-    background-color: #3B82F6;
+    background-color: #4a4a4a;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    box-shadow: 0 4px 12px rgba(74, 74, 74, 0.35);
 }
 .btn-edit:hover {
-    background-color: #2563EB;
+    background-color: #2e2e2e;
     color: #ffffff;
-    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.45);
+    box-shadow: 0 6px 16px rgba(74, 74, 74, 0.45);
     transform: translateY(-1px);
 }
 
-/* Delete — rose */
+/* Delete — black */
 .btn-delete {
-    background-color: #F43F5E;
+    background-color: #1a1a1a;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.35);
+    box-shadow: 0 4px 12px rgba(26, 26, 26, 0.35);
 }
 .btn-delete:hover {
-    background-color: #E11D48;
+    background-color: #000000;
     color: #ffffff;
-    box-shadow: 0 6px 16px rgba(244, 63, 94, 0.45);
+    box-shadow: 0 6px 16px rgba(26, 26, 26, 0.45);
     transform: translateY(-1px);
 }
 
-/* Regular — slate */
+/* Regular — black to amber gradient */
 .btn-regular {
-    background: linear-gradient(135deg, #059669, #065f46);;
+    background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(100, 116, 139, 0.35);
+    box-shadow: 0 4px 12px rgba(26, 26, 26, 0.35);
 }
 .btn-regular:hover {
-    background: linear-gradient(135deg, #065f46, #0b2d23);
-    color: #ffffff;
-    box-shadow: 0 6px 16px rgba(100, 116, 139, 0.45);
+    background: linear-gradient(135deg, #F2B33D, #D99A26);
+    color: #0a0a0a;
+    box-shadow: 0 6px 16px rgba(242, 179, 61, 0.45);
     transform: translateY(-1px);
 }
+
 /* Card */
 .card {
     background: #ffffff;
     border: none;
     border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(11, 45, 35, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: box-shadow 0.25s ease;
 }
 
 .card:hover {
-    box-shadow: 0 8px 28px rgba(11, 45, 35, 0.13);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
 }
 
 .card-header {
-    background: linear-gradient(135deg, #0b2d23, #0d3d2b);
-    color: #f0faf5;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    color: #ffffff;
     border: none;
     border-radius: 15px 15px 0 0 !important;
     padding: 14px 20px;
@@ -294,7 +295,7 @@ footer {
 
 .profile-dropdown label {
     cursor: pointer;
-    color: #6ee7b7;
+    color: #F2B33D;
     font-size: 1.25rem;
     padding: 6px 10px;
     border-radius: 8px;
@@ -305,8 +306,8 @@ footer {
 }
 
 .profile-dropdown label:hover {
-    color: #f0faf5;
-    background: rgba(110, 231, 183, 0.15);
+    color: #ffffff;
+    background: rgba(242, 179, 61, 0.15);
 }
 
 .profile-menu {
@@ -314,8 +315,8 @@ footer {
     position: absolute;
     right: 0;
     top: 130%;
-    background: #0b2d23;
-    border: 1px solid rgba(110, 231, 183, 0.25);
+    background: #0a0a0a;
+    border: 1px solid rgba(242, 179, 61, 0.25);
     border-radius: 10px;
     overflow: hidden;
     z-index: 9999;
@@ -331,11 +332,11 @@ footer {
     align-items: center;
     gap: 10px;
     padding: 11px 18px;
-    color: #a7f3d0;
+    color: #f5f5f5;
     text-decoration: none;
     font-size: 13.5px;
     transition: all 0.2s ease;
-    border-bottom: 1px solid rgba(110, 231, 183, 0.08);
+    border-bottom: 1px solid rgba(242, 179, 61, 0.08);
 }
 
 .profile-menu a:last-child {
@@ -343,7 +344,7 @@ footer {
 }
 
 .profile-menu a:hover {
-    background: rgba(5, 150, 105, 0.2);
-    color: #6ee7b7;
+    background: rgba(242, 179, 61, 0.2);
+    color: #F2B33D;
     padding-left: 22px;
 }

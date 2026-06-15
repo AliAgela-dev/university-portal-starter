@@ -21,6 +21,7 @@
     {{-- page content that change for every pages, change it using @section('content') --}}
     <main class="container my-4"> 
     @yield('content')
+    <x-card title='hello'>welcome to your page</x-card>
     </main>
     {{-- footer of all the pages --}}
     @include('layouts.footer')
