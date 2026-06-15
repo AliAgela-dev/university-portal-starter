@@ -580,26 +580,29 @@ body {
 
         .forgot-link:hover { text-decoration: underline; }
 
-       .login-btn {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #0a1628, #1a3a6b);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-    position: relative;
-    margin-top: 12px;
+    .login-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #0a1628, #1a3a6b);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+        position: relative;
+        margin-top: 12px;
 }
 
+
+    
 .login-btn:hover {
     background: linear-gradient(135deg, #1a3a6b, #2155a3);
     transform: translateY(-1px);
@@ -624,4 +627,10 @@ body {
     margin-top: 24px;
     color: #6b7688;
     font-size: 0.82rem;
+}
+.error-msg {
+    display: none;
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 10px;
 }

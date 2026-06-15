@@ -12,13 +12,8 @@ Route::get('/', function () {
     return view('login-form');
 });
 
-Route::get('/login-form', function () {
-    return view('login-form');
-});
-
-Route::get('/register-form', function () {
-    return view('register');
-});
+Route::get('/login', fn() => view('login-form'))->name('login');
+Route::get('/register', fn() => view('register'))->name('register');
 
 Route::resource('departments', DepartmentController::class)->except('show');
 Route::resource('students', StudentController::class)->except('show');

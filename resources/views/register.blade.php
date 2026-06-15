@@ -21,46 +21,54 @@
         </div>
     </div>
 
+    <div class="login-title">
+        <h2>Create Account</h2>
+        <p>Sign up for a new account</p>
+    </div>
 
     <div class="form-group">
         <label>Email Address</label>
-        <input type="text" id="reg-email" placeholder="you@limu.edu.ly">
+        <input type="email" id="reg-email" placeholder="you@limu.edu.ly">
     </div>
 
     <div class="form-group">
         <label>Password</label>
         <input type="password" id="reg-password" placeholder="••••••••">
     </div>
+    <p class="error-msg" id="reg-error"></p>
 
-    <p class="error-msg" id="reg-error"> Please enter your email and password!</p>
+<button type="button" onclick="checkRegister()" class="login-btn">Sign Up</button>
 
-   <button onclick="checkRegister()" class="login-btn">Sign Up</button>
-   
-   <a href="/login-form" class="login-btn">
-    Log In
-   </a>
-
-<div class="login-footer">
+<button type="button" onclick="window.location.href='{{ route('login') }}'" class="login-btn">Log In</button>
     <div class="login-footer">
         &copy; {{ date('Y') }} LIMU Portal &mdash; University Management System
     </div>
 </div>
-
 <script>
 function checkRegister() {
-    const email = document.getElementById('reg-email').value;
+    const email    = document.getElementById('reg-email').value.trim();
     const password = document.getElementById('reg-password').value;
+    const errorEl  = document.getElementById('reg-error');
 
-    if (
-        email === 'hadeel_4455@limu.edu.ly' &&
-        (password === 'limu#2023limu#2018')
-    ) {
-        window.location.href = "{{ route('departments.index') }}";
-    } else {
-        document.getElementById('reg-error').innerText =
-            '❌ Invalid email or password!';
-        document.getElementById('reg-error').style.display = 'block';
+    errorEl.style.display = 'none';
+    errorEl.textContent = '';
+
+    if (!email || !email.includes('@')) {
+        showError('Please enter a valid email address.'); return;
     }
+    if (password.length < 8) {
+        showError('Password must be at least 8 characters.'); return;
+    
+    }
+
+    alert('Account created successfully!');
+    window.location.href = "{{ route('login') }}";
+}
+
+function showError(msg) {
+    const errorEl = document.getElementById('reg-error');
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
 }
 </script>
 </body>
