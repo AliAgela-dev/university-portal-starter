@@ -1,7 +1,7 @@
 <header>
   <div class="logo"><a href="#"><i class="fa-solid fa-graduation-cap"></i> university portal</a></div>
   <nav>
-    <a href="#"><i class="fa-regular fa-building"></i> Derpartment</a>
+    <a href="{{ route('departments.index') }}"><i class="fa-regular fa-building"></i> Derpartment</a>
     <a href="#"><i class="fa-solid fa-user-graduate"></i> Student</a>
     <a href="#"><i class="fa-solid fa-book"></i> Course</a>
 

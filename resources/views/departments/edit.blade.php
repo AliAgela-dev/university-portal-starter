@@ -13,3 +13,32 @@
 
     TODO: build the form here.
 --}}
+
+@extends('layouts.app')
+
+@section('your-title', 'Edit Department')
+
+@section('content')
+<div class="container">
+    <h1>Edit Department</h1>
+
+    <x-button type="back" :href="route('departments.index')" />
+
+    <x-card>
+        <x-form action="{{ route('departments.update', $department->getId()) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <x-form-input
+                name="name"
+                label="Department Name"
+                type="text"
+                placeholder="e.g. Computer Science"
+                :value="$department->getName()"
+            />
+
+            <x-button type="submit">Update Department</x-button>
+        </x-form>
+    </x-card>
+</div>
+@endsection

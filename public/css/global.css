@@ -264,6 +264,20 @@ footer {
     transform: translateY(-1px);
 }
 
+/* Back — neutral outline */
+.btn-back {
+    background-color: transparent;
+    color: #1a1a1a;
+    border: 1.5px solid #1a1a1a;
+    box-shadow: none;
+}
+.btn-back:hover {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(26, 26, 26, 0.25);
+    transform: translateY(-1px);
+}
+
 /* Card */
 .card {
     background: #ffffff;
@@ -271,6 +285,7 @@ footer {
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: box-shadow 0.25s ease;
+    margin-top: 15px;
 }
 
 .card:hover {

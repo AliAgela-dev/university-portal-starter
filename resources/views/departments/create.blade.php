@@ -20,6 +20,7 @@
 <div class="container">
     <h1>Create New Department</h1>
 
+    <x-button type="back" :href="route('departments.index')" />
     <x-card>
         <x-form action="{{ route('departments.store') }}" method="POST">
             @csrf
@@ -31,14 +32,7 @@
                 placeholder="e.g. Computer Science"
             />
 
-            <x-form-input
-                name="ID"
-                label="Department ID"
-                type="text"
-                placeholder="e.g. 5"
-            />
-
-            <x-button type="regular">Save Department</x-button>
+            <x-button type="submit">Save Department</x-button>
         </x-form>
     </x-card>
 </div>
