@@ -17,7 +17,6 @@
 @section('your-title', 'Create Department')
 
 @section('content')
-<div class="container">
     <h1>Create New Department</h1>
 
     <x-button type="back" :href="route('departments.index')" />
@@ -30,10 +29,10 @@
                 label="Department Name"
                 type="text"
                 placeholder="e.g. Computer Science"
+                required
             />
 
             <x-button type="submit">Save Department</x-button>
         </x-form>
     </x-card>
-</div>
 @endsection

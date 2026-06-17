@@ -2,10 +2,10 @@
   <div class="logo"><a href="#"><i class="fa-solid fa-graduation-cap"></i> university portal</a></div>
   <nav>
     <a href="#"><i class="fa-solid fa-chart-column"></i> Dashboard</a>
-    <a href="{{ route('departments.index') }}"><i class="fa-regular fa-building"></i> Derpartments</a>
+    <a href="{{ route('departments.index') }}"><i class="fa-regular fa-building"></i> Departments</a>
     <a href="#"><i class="fa-solid fa-user-graduate"></i> Students</a>
     <a href="#"><i class="fa-solid fa-book"></i> Courses</a>
-    <a href="#"><i class="fa-solid fa-person-chalkboard"></i> Professors</a>
+    <a href="{{ route('professors.index') }}"><i class="fa-solid fa-person-chalkboard"></i> Professors</a>
 
 
         <div class="profile-dropdown">

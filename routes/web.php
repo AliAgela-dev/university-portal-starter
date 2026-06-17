@@ -46,3 +46,5 @@ Route::get('/layout', function () {
 })->name('layouts');
 
 Route::resource('departments', DepartmentController::class);
+Route::resource('professors', ProfessorController::class);
+

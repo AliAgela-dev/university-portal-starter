@@ -22,7 +22,6 @@
 @section('your-title', 'university Department')
 
 @section('content')
-<div class="container">
     <h1>Departments</h1>
 
     <x-button type="create" :href="route('departments.create')">Department</x-button>
@@ -47,5 +46,4 @@
             @endforeach
         </x-table>
     </x-card>
-</div>
 @endsection

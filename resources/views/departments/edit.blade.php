@@ -19,7 +19,6 @@
 @section('your-title', 'Edit Department')
 
 @section('content')
-<div class="container">
     <h1>Edit Department</h1>
 
     <x-button type="back" :href="route('departments.index')" />
@@ -40,5 +39,4 @@
             <x-button type="submit">Update Department</x-button>
         </x-form>
     </x-card>
-</div>
 @endsection
