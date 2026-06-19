@@ -23,7 +23,7 @@
 
     <div class="login-title">
         <h2>Welcome</h2>
-        <p>Sign in to your account</p>
+        <p>Log in to your account</p>
     </div>
 
     <div class="form-group">
@@ -40,22 +40,32 @@
 
     <button type="button" onclick="checkLogin()" class="login-btn">Log In</button>
 
- <button type="button" onclick="window.location.href='{{ route('register') }}'" class="login-btn">Sign Up</button>
     <div class="login-footer">
         &copy; {{ date('Y') }} LIMU Portal &mdash; University Management System
     </div>
 </div>
-
 <script>
 function checkLogin() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
 
-    if (email && password) {
-        document.getElementById('error-msg').style.display = 'none';
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const error = document.getElementById('error-msg');
+
+
+    if (
+        email === 'Limu#2026' &&
+        password === 'Limu#2026'
+    ) {
+
+        error.style.display = 'none';
+
         window.location.href = "{{ route('departments.index') }}";
+
     } else {
-        document.getElementById('error-msg').style.display = 'block';
+
+        error.innerText = "Invalid email or password!";
+        error.style.display = 'block';
+
     }
 }
 </script>
