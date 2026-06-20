@@ -72,7 +72,14 @@
                 <a href="#" class="forgot-link">Forgot password?</a>
             </div>
 
-            <button type="submit" class="btn-login"><a href='#' class="login-link">Login</a></button>
+            <button type="submit" class="btn-login">Login</button>
+
+            <p class="bottom-text">
+                Don't have an account?
+                <a href="{{ route('register') }}" class="bottom-link">Sign up</a>
+            </p>
+
+        </form>
 
         </form>
     </div>
