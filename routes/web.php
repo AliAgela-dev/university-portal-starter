@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EnrollmentController;
@@ -9,32 +10,38 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| YOUR TASK — register the routes
+| Authentication (PROVIDED — you don't need to change this)
 |--------------------------------------------------------------------------
-| The five controllers imported above are already written for you. Your job
-| is to wire each one up with a full set of CRUD routes.
+| A simple login system is wired up for you:
+|     GET  /login      shows the login form
+|     POST /login      signs the user in
+|     GET  /register   shows the sign-up form
+|     POST /register   creates an account
+|     POST /logout     signs them out
+|     GET  /dashboard  the page you land on after logging in
 |
-| Every controller has these methods: index, create, store, edit, update,
-| destroy  (there is NO `show` method). The quickest way to register all of
-| them at once is Route::resource().
-|
-| IMPORTANT: the controllers redirect to route names such as
-| 'students.index', so the resource name MUST match this list exactly:
-|
-|     departments  ->  DepartmentController
-|     students     ->  StudentController
-|     courses      ->  CourseController
-|     professors   ->  ProfessorController
-|     enrollments  ->  EnrollmentController
-|
-| TODO:
-|   1. Add a route for '/' (e.g. redirect to one of the modules).
-|   2. Register a resource route for each of the five controllers.
-|      Remember to exclude 'show'.
+| The whole portal is protected: every controller requires a logged-in user
+| (see app/Http/Controllers/Controller.php). Sign in with the seeded account
+| created by the database seeder:   admin@uni.edu  /  password
+*/
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::view('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
+
+/*
+|--------------------------------------------------------------------------
+| YOUR TASK — register the portal routes
+|--------------------------------------------------------------------------
+| The five controllers above are written for you. Register a full set of
+| CRUD routes for each. The resource names must be:
+|     departments, students, courses, professors, enrollments
 |
 | One worked example — write the other four yourself:
-|
 |     // Route::resource('departments', DepartmentController::class)->except('show');
 */
 
 // TODO: write your routes below this line.
+Route::get("/courses",[CourseController::class,'index']);
