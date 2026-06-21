@@ -17,10 +17,10 @@
 @section('your-title', 'Create Department')
 
 @section('content')
-    <h1>Create New Department</h1>
+    
 
     <x-button type="back" :href="route('departments.index')" />
-    <x-card>
+    <x-card title="Create New Department">
         <x-form action="{{ route('departments.store') }}" method="POST">
             @csrf
 
