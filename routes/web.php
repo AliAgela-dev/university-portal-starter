@@ -16,10 +16,6 @@ Route::get('/register', function () {
     return view('auth.sign-up');
 })->name('register');
 
-Route::get('/layout', function () {
-    return view('layouts.app');
-})->name('layouts');
-
 Route::resource('departments', DepartmentController::class)
     ->except('show');
 
