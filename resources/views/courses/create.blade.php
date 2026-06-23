@@ -1,97 +1,57 @@
-{{--
-    YOUR TASK (W10):  form to create a new course.
-
-    The controller passes in:
-        $departmentOptions  — an array of [id => name] for a dropdown
-
-    Submit with:
-        method="POST"  action="{{ route('courses.store') }}"  @csrf
-
-    Validated fields (use these as input name=""):
-        title         (required)
-        course_code   (required)
-        credit_hours  (required, a whole number between 1 and 12)
-        department_id (optional)
-
-    TODO: build the form here.
---}}
 @extends('layouts.app')
 
-@section('title', 'Add Course')
+@section('page-title','Create Course')
 
 @section('content')
 
-<div class="container py-4">
+<x-card title="Create Course">
 
-```
-<div class="card shadow-sm">
-    <div class="card-header bg-dark text-white">
-        <h4 class="mb-0">Add New Course</h4>
-    </div>
+<x-button 
+type="back"
+:href="route('courses.index')"
+/>
 
-    <div class="card-body">
+<x-form 
+action="{{ route('courses.store') }}"
+method="POST">
 
-        <form method="POST" action="{{ route('courses.store') }}">
-            @csrf
+@csrf
 
-            <div class="mb-3">
-                <label class="form-label">Course Title</label>
-                <input type="text"
-                       name="title"
-                       class="form-control"
-                       value="{{ old('title') }}"
-                       required>
-            </div>
+<x-form-input
+name="title"
+label="Course Title"
+placeholder="e.g. Database Systems"
+required
+/>
 
-            <div class="mb-3">
-                <label class="form-label">Course Code</label>
-                <input type="text"
-                       name="course_code"
-                       class="form-control"
-                       value="{{ old('course_code') }}"
-                       required>
-            </div>
+<x-form-input
+name="course_code"
+label="Course Code"
+placeholder="e.g. IT205"
+required
+/>
 
-            <div class="mb-3">
-                <label class="form-label">Credit Hours</label>
-                <input type="number"
-                       name="credit_hours"
-                       class="form-control"
-                       min="1"
-                       max="12"
-                       value="{{ old('credit_hours', 3) }}"
-                       required>
-            </div>
+<x-form-input
+name="credit_hours"
+label="Credit Hours"
+type="number"
+placeholder="e.g. 3"
+required
+/>
 
-            <div class="mb-3">
-                <label class="form-label">Department</label>
+<x-form-select
+name="department_id"
+label="Department"
+:options="$departmentOptions"
+/>
 
-                <select name="department_id" class="form-select">
-                    <option value="">Select Department</option>
+<x-button type="submit">
+Save Course
+</x-button>
 
-                    @foreach($departmentOptions as $id => $name)
-                        <option value="{{ $id }}">
-                            {{ $name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+</x-form>
 
-            <a href="{{ route('courses.index') }}"
-               class="btn btn-secondary">
-                Back
-            </a>
+</x-card>
 
-            <button type="submit"
-                    class="btn btn-success">
-                Save Course
-            </button>
-
-        </form>
-
-    </div>
-</div>
-```
-
-</div>
 @endsection
+
