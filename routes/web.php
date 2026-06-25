@@ -69,3 +69,4 @@ Route::resource('students', StudentController::class)->except('show');
 Route::resource('courses', CourseController::class)->except('show');
 Route::resource('professors', ProfessorController::class)->except('show');
 Route::resource('enrollments', EnrollmentController::class)->except('show');
+
