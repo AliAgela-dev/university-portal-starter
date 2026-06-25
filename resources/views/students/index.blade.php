@@ -5,16 +5,20 @@
 
 @section('content')
 
-
+<h1 class="page-title">Students</h1>
 <x-card>
-    <h1>Students</h1>
 
+<div class="toolbar">
+    <x-search-bar target=".student-row" placeholder="Search by name, email or department..." />
 
-<x-button
-type="create"
-href="{{ route('students.create') }}">
-Student
-</x-button>
+    <x-button
+    type="create"
+    href="{{ route('students.create') }}">
+    Student
+    </x-button>
+</div>
+
+</x-card>
 
 
 
@@ -38,7 +42,7 @@ Student
 @forelse($students as $student)
 
 
-<tr>
+<tr class="student-row">
 
 <td>
 {{ $student->getId() }}
@@ -105,7 +109,6 @@ No students found
 </x-table>
 
 
-</x-card>
 
 
 @endsection
