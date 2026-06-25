@@ -43,7 +43,7 @@ nav a.active {
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #f4f4f5;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -226,28 +226,32 @@ footer {
 }
 
 /* Edit — dark grey */
+/* Edit — amber outline (ينسجم مع الـ theme) */
 .btn-edit {
-    background-color: #2563eb;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    background-color: transparent;
+    color: #B8860B;
+    border: 1.5px solid #F2B33D;
+    box-shadow: none;
 }
 .btn-edit:hover {
-    background-color: #1d4ed8;
-    color: #ffffff;
-    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.5);
+    background-color: #F2B33D;
+    color: #0a0a0a;
+    box-shadow: 0 4px 14px rgba(242, 179, 61, 0.4);
     transform: translateY(-1px);
 }
 
-/* Delete — red */
+/* Delete — soft red outline (تحذير من غير ما يصرخ) */
 .btn-delete {
-    background-color: #e11d48;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.35);
+    background-color: transparent;
+    color: #c43d52;
+    border: 1.5px solid rgba(196, 61, 82, 0.55);
+    box-shadow: none;
 }
 .btn-delete:hover {
-    background-color: #be123c;
+    background-color: #c43d52;
     color: #ffffff;
-    box-shadow: 0 6px 18px rgba(225, 29, 72, 0.5);
+    border-color: #c43d52;
+    box-shadow: 0 4px 14px rgba(196, 61, 82, 0.35);
     transform: translateY(-1px);
 }
 
@@ -370,41 +374,253 @@ footer {
     padding-left: 22px;
 }
 
-.table-wrapper table th,
-.table-wrapper table td {
-    padding: 12px 20px;
+/* Logout form داخل القائمة — يخلي الفورم ما ياخذ مساحة زيادة */
+.profile-menu form {
+    margin: 0;
+    padding: 0;
 }
 
-.table-wrapper table tbody tr {
-    border-bottom: 1px solid #f0f0f0;
+/* زر Logout يطابق ستايل روابط القائمة (.profile-menu a) */
+.profile-menu form button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    color: #f5f5f5;
+    background: none;
+    border: none;
+    border-top: 1px solid rgba(242, 179, 61, 0.08);
+    text-align: left;
+    font-size: 13.5px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.table-wrapper table tbody tr:hover {
-    background-color: #f9fafb;
+.profile-menu form button:hover {
+    background: rgba(242, 179, 61, 0.2);
+    color: #F2B33D;
+    padding-left: 22px;
 }
 
-.table-wrapper table thead th:first-child {
-    border-radius: 0;
+
+/* ===== Search Bar Component ===== */
+.search-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
-.table-wrapper table th,
-.table-wrapper table td {
-    padding: 12px 20px;
+.search-bar-input {
+    padding: 9px 16px 9px 38px;
+    border: 1.5px solid rgba(26, 26, 26, 0.15);
+    border-radius: 10px;
+    font-size: 14px;
+    width: 260px;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    transition: all 0.25s ease;
+
+    /* أيقونة بحث مدمجة عبر SVG (بدون مكتبات خارجية) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23F2B33D' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 12px center;
+    background-size: 15px;
 }
 
-.table-wrapper table tbody tr {
-    border-bottom: 1px solid #f0f0f0;
+.search-bar-input::placeholder {
+    color: rgba(26, 26, 26, 0.45);
 }
 
-.table-wrapper table tbody tr:hover {
-    background-color: #f9fafb;
+.search-bar-input:focus {
+    outline: none;
+    border-color: #F2B33D;
+    box-shadow: 0 4px 12px rgba(242, 179, 61, 0.25);
 }
 
-.table-wrapper table thead th:first-child {
-    border-radius: 0;
+.search-bar-input:hover {
+    border-color: rgba(242, 179, 61, 0.5);
 }
 
-.table-wrapper td:last-child {
+/* نسخة Dark (لو احتجتها فوق هيدر أو فوتر أسود) */
+.search-bar-input--dark {
+    background-color: #1a1a1a;
+    border: 1.5px solid rgba(242, 179, 61, 0.25);
+    color: #f5f5f5;
+}
+
+.search-bar-input--dark::placeholder {
+    color: rgba(245, 245, 245, 0.45);
+}
+
+.search-bar-input--dark:focus {
+    border-color: #F2B33D;
+    box-shadow: 0 0 0 3px rgba(242, 179, 61, 0.2);
+}
+
+/* Delete Modal Overlay */
+#deleteModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Box */
+#deleteModal .modal-box {
+    background: #ffffff;
+    border-radius: 15px;
+    border: 2px solid rgba(242, 179, 61, 0.4);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    width: 360px;
+    max-width: 90%;
+    text-align: center;
+}
+
+/* Icon Circle */
+#deleteModal .modal-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(225, 29, 72, 0.1);
+    border: 1.5px solid rgba(225, 29, 72, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+#deleteModal .modal-icon i {
+    font-size: 26px;
+    color: #e11d48;
+}
+
+/* Title */
+#deleteModal .modal-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0a0a0a;
+    margin: 0 0 6px;
+}
+
+/* Subtitle */
+#deleteModal .modal-subtitle {
+    font-size: 13px;
+    color: rgba(26, 26, 26, 0.55);
+    margin: 0 0 1.5rem;
+    line-height: 1.6;
+}
+
+/* Buttons Row */
+#deleteModal .modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+#deleteModal .modal-actions .custome-btn {
+    flex: 1;
+    justify-content: center;
+}
+
+/* عنوان الصفحة */
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0a0a0a;
+    margin: 0 0 18px;
+}
+
+/* صف الأدوات: بحث يسار + زر يمين */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* نخلي الـ search bar ياخذ المساحة المرنة */
+.toolbar .search-bar-wrapper {
+    margin-bottom: 0;
+    flex: 1;
+    max-width: 320px;
+}
+
+.toolbar .search-bar-input {
+    width: 100%;
+}
+
+/* ===== Table Component ===== */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(10, 10, 10, 0.1);
+    margin-top: 15px;
+    border: 1px solid #ececec;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    font-size: 14px;
+    text-align: left;
+    direction: ltr;
+}
+
+.data-table[dir="rtl"] {
+    text-align: right;
+    direction: rtl;
+}
+
+/* رأس الجدول: أسود نظيف + خط أصفر سفلي رفيع */
+.data-table thead tr {
+    background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+    color: #ffffff;
+}
+
+.table-wrapper .data-table thead th {
+    padding: 14px 20px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    border-bottom: 2px solid #F2B33D;
+    text-transform: uppercase;
+    font-size: 12.5px;
+}
+
+.table-wrapper .data-table td {
+    padding: 13px 20px;
+    color: #2a2a2a;
+}
+
+/* خطوط فاصلة ناعمة */
+.table-wrapper .data-table tbody tr {
+    border-bottom: 1px solid #f2f2f2;
+    transition: background-color 0.2s ease;
+}
+
+.table-wrapper .data-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* صفوف مخططة (zebra) خفيفة جداً */
+.table-wrapper .data-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* hover بلمسة amber دافئة */
+.table-wrapper .data-table tbody tr:hover {
+    background-color: rgba(242, 179, 61, 0.08);
+}
+
+/* صف الأزرار */
+.table-wrapper .data-table td:last-child {
     display: flex;
     gap: 8px;
     align-items: center;

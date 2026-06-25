@@ -38,10 +38,19 @@
         <a href="profile-page.html">
           <i class="fa-regular fa-circle-user"></i> Profile
         </a>
-<form action="{{ route('logout') }}" method="POST">
+
+        <form action="{{ route('logout') }}" method="POST">
     @csrf
     <button type="submit">
         <i class="fa-solid fa-right-from-bracket"></i> Logout
     </button>
 </form>
+<<<<<<< HEAD
         
+=======
+
+      </div>
+    </div>
+  </nav>
+</header>
+>>>>>>> 63fe449b6060733fa3e53ef038eeb88c3a36ff9a

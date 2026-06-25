@@ -2,16 +2,23 @@
     YOUR TASK (W10 + W13):  list every course.
 --}}
 
+{{--
+    YOUR TASK (W10 + W13):  list every course.
+--}}
+
 @extends('layouts.app')
 
 @section('your-title', 'University Courses')
 
 @section('content')
-
+<h1 class="page-title">Courses</h1>
 <x-card>
-    <h1>Courses</h1>
-
+    <div class="toolbar">
+    <x-search-bar target=".course-row" placeholder="Search by name, code or department..." />
     <x-button type="create" :href="route('courses.create')">Course</x-button>
+    </div>
+    </x-card>
+
 
     <x-table>
         <x-slot:thead>
@@ -24,12 +31,14 @@
         </x-slot:thead>
 
         @foreach ($courses as $course)
-            <tr>
+            <tr class="course-row">
                 <td>{{ $course->getId() }}</td>
                 <td>{{ $course->getTitle() }}</td>
                 <td>{{ $course->getCourseCode() }}</td>
                 <td>{{ $course->getCreditHours() }}</td>
-                <td>{{ $course->getDepartmentName() ?? 'No Department' }}</td>
+                <td class="{{ $course->getDepartmentName() ? '' : 'text-danger fw-bold' }}">
+                        {{ $course->getDepartmentName() ?? 'No department' }}
+                    </td>
                 <td>
                     <x-button type="edit" :href="route('courses.edit', $course->getId())" />
                     <x-button type="delete" :href="route('courses.destroy', $course->getId())" />
@@ -37,6 +46,6 @@
             </tr>
         @endforeach
     </x-table>
-</x-card>
+
 
 @endsection
