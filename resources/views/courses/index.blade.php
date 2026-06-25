@@ -36,7 +36,9 @@
                 <td>{{ $course->getTitle() }}</td>
                 <td>{{ $course->getCourseCode() }}</td>
                 <td>{{ $course->getCreditHours() }}</td>
-                <td>{{ $course->getDepartmentName() ?? 'No Department' }}</td>
+                <td class="{{ $course->getDepartmentName() ? '' : 'text-danger fw-bold' }}">
+                        {{ $course->getDepartmentName() ?? 'No department' }}
+                    </td>
                 <td>
                     <x-button type="edit" :href="route('courses.edit', $course->getId())" />
                     <x-button type="delete" :href="route('courses.destroy', $course->getId())" />
