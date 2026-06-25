@@ -25,7 +25,7 @@
             <p>Smart academic management system for students, courses, departments and professors.</p>
 
             <div class="buttons">
-                <a href="{{ route('login') }}" class="glass-btn gold" onclick="showLoginPopup(event)">
+                <a href="{{ route('login') }}" class="glass-btn gold">
                     <div class="person-icon">
                         <svg viewBox="0 0 64 64">
                             <circle cx="32" cy="22" r="10"/>
@@ -35,7 +35,7 @@
                     Login
                 </a>
 
-                <a href="{{ route('register') }}" class="glass-btn white-glass" onclick="showRegisterPopup(event)">
+                <a href="{{ route('register') }}" class="glass-btn white-glass">
                     <div class="person-icon">
                         <svg viewBox="0 0 64 64">
                             <circle cx="28" cy="22" r="10"/>
@@ -50,65 +50,5 @@
         </div>
     </div>
 
-    <div id="loginPopup" class="popup">
-        <div class="popup-box">
-            <div class="popup-cap">
-                <svg viewBox="0 0 100 100">
-                    <path fill="#F2B33D" d="M50 15 L90 35 L50 55 L10 35 Z" />
-                    <path fill="#fff" d="M25 42.5 V65 C 25 75, 75 75, 75 65 V42.5" />
-                </svg>
-            </div>
-            <h2>Welcome Back!</h2>
-            <p>We are glad to see you again in our academic system. Click continue to securely access your portal account.</p>
-            <div class="popup-buttons">
-                <button class="btn-confirm" id="confirmLoginBtn">Continue to Portal</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="registerPopup" class="popup">
-        <div class="popup-box">
-            <div class="popup-cap">
-                <svg viewBox="0 0 100 100">
-                    <path fill="#F2B33D" d="M50 15 L90 35 L50 55 L10 35 Z" />
-                    <path fill="#fff" d="M25 42.5 V65 C 25 75, 75 75, 75 65 V42.5" />
-                </svg>
-            </div>
-            <h2>Confirm Account Registration?</h2>
-            <p>Are you sure you want to proceed and create a new student account inside the university portal system?</p>
-            <div class="popup-buttons">
-                <button class="btn-confirm" id="confirmRegisterBtn">Yes, Proceed</button>
-                <button class="btn-cancel" onclick="closePopup('registerPopup')">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let targetUrl = '';
-
-        function showLoginPopup(event) {
-            event.preventDefault(); 
-            targetUrl = event.currentTarget.getAttribute('href');
-            document.getElementById('loginPopup').classList.add('active');
-        }
-
-        function showRegisterPopup(event) {
-            event.preventDefault();
-            targetUrl = event.currentTarget.getAttribute('href');
-            document.getElementById('registerPopup').classList.add('active');
-        }
-
-        function closePopup(id) {
-            document.getElementById(id).classList.remove('active');
-        }
-
-        document.getElementById('confirmLoginBtn').addEventListener('click', function() {
-            window.location.href = targetUrl;
-        });
-
-        document.getElementById('confirmRegisterBtn').addEventListener('click', function() {
-            window.location.href = targetUrl;
-        });
-    </script>
 </body>
 </html>

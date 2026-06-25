@@ -45,12 +45,8 @@
         <i class="fa-solid fa-right-from-bracket"></i> Logout
     </button>
 </form>
-<<<<<<< HEAD
-        
-=======
 
       </div>
     </div>
   </nav>
 </header>
->>>>>>> 63fe449b6060733fa3e53ef038eeb88c3a36ff9a
