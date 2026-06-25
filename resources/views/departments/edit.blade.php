@@ -33,8 +33,5 @@
     </div>
 @endsection
 @push('styles')
-    <link rel="stylesheet" href="{{ url('css/Departments.css') }}">
-@endpush
-@push('scripts')
-    <script src="{{ url('js/Departments.js') }}"></script>
+    <link rel="stylesheet" href="{{ url('css/departments-edit.css') }}">
 @endpush

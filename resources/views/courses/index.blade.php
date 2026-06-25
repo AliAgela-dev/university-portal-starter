@@ -1,57 +1,79 @@
-{{--
-    YOUR TASK (W10 + W13):  list every course.
-
-    The controller passes in:
-        $courses  — an array of App\DTOs\CourseDTO
-
-    Each CourseDTO gives you:
-        getId(), getTitle(), getCourseCode(), getCreditHours(),
-        getDepartmentId(), getDepartmentName()
-
-    Build a table (loop with @foreach) with, per row:
-        - an "Edit" link    -> route('courses.edit', $course->getId())
-        - a "Delete" <form> (POST + @csrf + @method('DELETE'))
-              action -> route('courses.destroy', $course->getId())
-    Plus a "New Course" link -> route('courses.create').
-
-    TODO: build the view here.
---}}
 @extends('layouts.layout')
-
+@section('title', 'Courses')
 @section('content')
-    <div class="page-header">
-        <h1 class="page-title">Courses</h1>
-        <a href="{{ route('courses.create') }}" class="btn">+ New Course</a>
+
+<div class="module-section">
+
+    <div class="module-header">
+        <div class="module-logo">
+            <i data-lucide="book-open"></i>
+        </div>
+        <div>
+            <p class="module-title">Courses</p>
+            <p class="module-desc">Manage academic courses and their departments</p>
+        </div>
     </div>
 
-    <table class="data-table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Code</th>
-                <th>Credit Hours</th>
-                <th>Department</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($courses as $course)
-                <tr>
-                    <td>{{ $course->getTitle() }}</td>
-                    <td>{{ $course->getCourseCode() }}</td>
-                    <td>{{ $course->getCreditHours() }}</td>
-                    <td>{{ $course->getDepartmentName() }}</td>
-                    <td class="actions-cell">
-                        <a href="{{ route('courses.edit', $course->getId()) }}">Edit</a>
+    <div class="search-and-create-card">
+        <div class="search-input-wrapper">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="module-search" class="search-input" placeholder="Search courses...">
+        </div>
+        <x-button :href="route('courses.create')" variant="primary" class="btn-add">
+            <i data-lucide="plus"></i>
+            Add Course
+        </x-button>
+    </div>
 
-                        <form action="{{ route('courses.destroy', $course->getId()) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="module-display-card">
+        <div class="display-card-header">
+            <span class="display-card-title">All Courses</span>
+            <span class="display-card-count">{{ count($courses) }}</span>
+        </div>
+
+        @foreach($courses as $course)
+            <div class="module-row">
+                <div class="module-row-icon">
+                    <i data-lucide="book-open"></i>
+                </div>
+                <div class="module-row-info">
+                    <span class="module-row-name">{{ $course->getTitle() }}</span>
+                    <div class="module-row-meta">
+                        {{ $course->getCourseCode() }} · {{ $course->getCreditHours() }} cr
+                        @if($course->getDepartmentName())
+                            · {{ $course->getDepartmentName() }}
+                        @endif
+                    </div>
+                </div>
+                <div class="module-row-actions">
+                    <a href="{{ route('courses.edit', $course->getId()) }}" class="btn-edit">
+                        <i data-lucide="pencil"></i>
+                    </a>
+                    <form action="{{ route('courses.destroy', $course->getId()) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn-delete">
+                            <i data-lucide="trash-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+
+        @if(count($courses) === 0)
+            <p class="module-empty">No courses found.</p>
+        @endif
+    </div>
+
+</div>
+
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="{{ url('css/modules.css') }}">
+    <link rel="stylesheet" href="{{ url('css/courses-index.css') }}">
+@endpush
+
+@push('scripts')
+    <script src="{{ url('js/modules.js') }}"></script>
+@endpush

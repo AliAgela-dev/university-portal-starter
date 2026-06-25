@@ -38,7 +38,7 @@
                     <div class="dropdown-items">
                         <a href="#"><i data-lucide="user"></i> Profile</a>
                         <a href="#"><i data-lucide="settings"></i> Preferences</a>
-                        <a href="#" class="logout"><i data-lucide="log-out"></i> Log out</a>
+                        <a href="{{ route('logout') }}" class="logout"><i data-lucide="log-out"></i> Log out</a>
                     </div>
                 </div>
             </div>

@@ -357,153 +357,62 @@ body {
     margin-top: 50px;
 }
 
-/*ISRAA=====*/
-/* ===== Course module ===== */
-.page-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 30px 0 25px 0;
-}
-
-.page-header-left {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    margin: 30px 0 25px 0;
-}
-
-.page-title {
-    color: #003135;
-    font-size: 26px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
-    background-color: #AFDDE5;
-    color: #003135;
-    text-decoration: none;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    font-size: 18px;
-    transition: background-color 0.2s ease;
-}
-.back-btn:hover {
-    background-color: #0FA4AF;
-    color: white;
-}
-
+/* ── Shared component styles (available on every page) ── */
 .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    background-color: #0FA4AF;
-    color: white;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 10px 20px;
     border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-.btn:hover {
-    background-color: #003135;
-}
-.btn-danger {
-    background-color: #964734;
-}
-.btn-danger:hover {
-    background-color: #7a3a2a;
-}
-
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    margin-bottom: 40px;
-}
-.data-table thead {
-    background-color: #003135;
-}
-.data-table thead th {
-    color: #AFDDE5;
-    text-align: left;
-    padding: 14px 18px;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-}
-.data-table tbody td {
-    padding: 14px 18px;
-    border-bottom: 1px solid #eee;
-    color: #333;
-    font-size: 14px;
-}
-.data-table tbody tr:last-child td {
-    border-bottom: none;
-}
-.data-table tbody tr:hover {
-    background-color: #f5f5f5;
-}
-.actions-cell {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-.actions-cell a {
-    color: #0FA4AF;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-}
-.actions-cell a:hover {
-    text-decoration: underline;
-}
-.actions-cell form {
-    display: inline;
-}
-
-.form-card {
-    background-color: white;
-    border-radius: 12px;
-    padding: 30px;
-    width: 100%;
-    box-sizing: border-box;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    margin-bottom: 40px;
-}
-.form-group {
-    margin-bottom: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-.form-group label {
-    font-size: 13px;
-    font-weight: bold;
-    color: #003135;
-}
-.form-group input,
-.form-group select {
-    padding: 10px 12px;
-    border: 1px solid #ddd;
     border-radius: 6px;
-    font-size: 14px;
-    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
-.form-group input:focus,
-.form-group select:focus {
+.btn-primary { background-color: #0FA4AF; color: white; }
+.btn-primary:hover { background-color: #0d8f99; color: white; }
+.btn-secondary { background-color: white; color: #374151; border: 1px solid #d1d5db; }
+.btn-secondary:hover { background-color: #f3f4f6; }
+.btn-danger { background-color: #ef4444; color: white; }
+.btn-danger:hover { background-color: #dc2626; }
+
+.card {
+    width: 100%;
+    max-width: 720px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.card-header {
+    background-color: #00393d;
+    color: white;
+    font-size: 1em;
+    font-weight: 700;
+    padding: 16px 24px;
+}
+.card-body { padding: 24px; }
+
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-label { display: flex; align-items: center; gap: 6px; font-size: 0.9em; font-weight: 600; color: #111827; }
+.required-asterisk { color: #ef4444; }
+.form-control {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.9em;
+    color: #111827;
     outline: none;
-    border-color: #0FA4AF;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.15s ease;
 }
+.form-control::placeholder { color: #9ca3af; }
+.form-control:focus { border-color: #0FA4AF; }
+.form-error { font-size: 0.85em; color: #ef4444; font-weight: 500; }
+

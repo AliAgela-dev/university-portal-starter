@@ -1,16 +1,31 @@
-{{--
-    YOUR TASK (W10):  form to create a new professor.
+@extends('layouts.layout')
+@section('title', 'Add Professor')
+@section('content')
 
-    The controller passes in:
-        $departmentOptions  — an array of [id => name] for a dropdown
+<div class="module-form-page">
+    <div class="module-return">
+        <a href="{{ route('professors.index') }}">
+            <i data-lucide="arrow-left"></i>
+            <span>Return to Professors</span>
+        </a>
+    </div>
 
-    Submit with:
-        method="POST"  action="{{ route('professors.store') }}"  @csrf
+    <x-card title="Add New Professor">
+        <form action="{{ route('professors.store') }}" method="POST" class="module-form">
+            @csrf
 
-    Validated fields (use these as input name=""):
-        name          (required)
-        email         (required, must be an email)
-        department_id (optional)
+            <x-form-input name="name" label="Full Name" placeholder="e.g. Dr. John Smith" required />
+            <x-form-input name="email" label="Email Address" type="email" placeholder="e.g. j.smith@university.edu" required />
+            <x-form-select name="department_id" label="Department" :options="$departmentOptions" placeholder="-- No Department --" />
 
-    TODO: build the form here.
---}}
+            <x-button type="submit" variant="primary">Create Professor</x-button>
+        </form>
+    </x-card>
+</div>
+
+@endsection
+
+@push('styles')
+    <link rel="stylesheet" href="{{ url('css/modules.css') }}">
+    <link rel="stylesheet" href="{{ url('css/professors-create.css') }}">
+@endpush
