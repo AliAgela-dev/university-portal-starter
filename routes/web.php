@@ -12,7 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-    return redirect()->route('departments.index');
+    return view('auth.login');
 })->name('login');
 
 Route::get('/register', function () {

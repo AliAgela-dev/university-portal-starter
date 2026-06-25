@@ -13,20 +13,49 @@
 {{-- edit button --}}
 @elseif($type === 'edit')
     <a href="{{ $href }}" class="btn custome-btn btn-edit">
-        <i class="fa-solid fa-pen-to-square"></i> Edit
+        <i class="fa-solid fa-pen-to-square"></i>
     </a>
 
 {{-- delete button --}}
 @elseif($type === 'delete')
-    <form action="{{ $href }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this?');">
+    <form action="{{ $href }}" method="POST" style="display:inline;">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn custome-btn btn-delete">
-            <i class="fa-solid fa-trash-can"></i> Delete
+        <button type="button" class="btn custome-btn btn-delete"
+            onclick="window._deleteForm=this.closest('form'); document.getElementById('deleteModal').style.display='flex'">
+            <i class="fa-solid fa-trash-can"></i> 
         </button>
     </form>
 
-{{-- submit button (used inside forms to actually save/send data) --}}
+    @once
+        <div id="deleteModal">
+            <div class="modal-box">
+                <div class="modal-icon">
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
+                <p class="modal-title">Confirm deletion</p>
+                <p class="modal-subtitle">are you sure you want to delete this item ?<br>This action cannot be reversed.</p>
+                <div class="modal-actions">
+                    <button onclick="document.getElementById('deleteModal').style.display='none'"
+                        class="btn custome-btn btn-back">
+                        <i class="fa-solid fa-xmark"></i> Cancel
+                    </button>
+                    <button onclick="window._deleteForm.submit()"
+                        class="btn custome-btn btn-delete">
+                        <i class="fa-solid fa-trash-can"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById('deleteModal').addEventListener('click', function(e) {
+                if (e.target === this) this.style.display = 'none';
+            });
+        </script>
+    @endonce
+
+{{-- submit button --}}
 @elseif($type === 'submit')
     <button type="submit" class="btn custome-btn btn-regular">
         {{ $slot }}
@@ -38,7 +67,7 @@
         <i class="fa-solid fa-arrow-left"></i> Back
     </a>
 
-{{-- regular button (default, plain button, no submit behavior) --}}
+{{-- regular button --}}
 @else
     <button type="button" class="btn custome-btn btn-regular">
         {{ $slot }}

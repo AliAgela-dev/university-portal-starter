@@ -23,28 +23,31 @@
 
 @section('content')
 
+    <h1 class="page-title">Departments</h1>
+
     <x-card>
-    <h1>Departments</h1>
-
-    <x-button type="create" :href="route('departments.create')">Department</x-button>
-
-        <x-table>
-            <x-slot:thead>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </x-slot:thead>
-
-            @foreach ($departments as $department)
-                <tr>
-                    <td>{{ $department->getId() }}</td>
-                    <td>{{ $department->getName() }}</td>
-                    <td>
-                        <x-button type="edit" :href="route('departments.edit', $department->getId())" />
-                        <x-button type="delete" :href="route('departments.destroy', $department->getId())" />
-                    </td>
-                </tr>
-            @endforeach
-        </x-table>
+        <div class="toolbar">
+            <x-search-bar target=".dept-row" placeholder="Search by name..." />
+            <x-button type="create" :href="route('departments.create')">Department</x-button>
+        </div>
     </x-card>
+
+    <x-table>
+        <x-slot:thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </x-slot:thead>
+
+        @foreach ($departments as $department)
+            <tr class="dept-row">
+                <td>{{ $department->getId() }}</td>
+                <td>{{ $department->getName() }}</td>
+                <td>
+                    <x-button type="edit" :href="route('departments.edit', $department->getId())" />
+                    <x-button type="delete" :href="route('departments.destroy', $department->getId())" />
+                </td>
+            </tr>
+        @endforeach
+    </x-table>
 @endsection

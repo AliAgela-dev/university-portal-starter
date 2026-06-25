@@ -2,8 +2,7 @@
     'title' => null,
 ])
 
-<div class="card shadow-sm mb-4">
-    {{-- سيظهر الهيدر فقط إذا قمت بتمرير عنوان --}}
+<div  class="card shadow-sm mb-4">
     @if ($title)
         <div class="card-header">
             <h5 class="mb-0">{{ $title }}</h5>

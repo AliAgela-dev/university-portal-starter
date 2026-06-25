@@ -19,14 +19,15 @@
 @section('your-title', 'university Professors')
 
 @section('content')
-
-
-    <x-card>
-    <h1>Professors</h1>
-
-    <x-button type="create" :href="route('professors.create')">
-        Professor
-    </x-button>
+<h1 class="page-title">Professors</h1>
+        <x-card>
+        <div class="toolbar">
+            <x-search-bar target=".professor-row" placeholder="Search by name, email or department..." />
+            <x-button type="create" :href="route('professors.create')">Professor</x-button>
+        </div>
+    </x-card>
+        
+    
 
         <x-table>
             <x-slot:thead>
@@ -39,7 +40,7 @@
             </x-slot:thead>
 
             @foreach ($professors as $professor)
-                <tr>
+                <tr class="professor-row">
                     <td>{{ $professor->getId() }}</td>
                     <td>{{ $professor->getName() }}</td>
                     <td>{{ $professor->getEmail() }}</td>
@@ -63,8 +64,5 @@
                     </td>
                 </tr>
             @endforeach
-
         </x-table>
-
-    </x-card>
 @endsection
