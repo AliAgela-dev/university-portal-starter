@@ -1,43 +1,32 @@
-@extends('layouts.app')
-
-@section('title', 'Add New Student')
-
+@extends('layouts.layout')
+@section('title', 'Add Student')
 @section('content')
-<div class="page-head">
-    <h1>Add New Student</h1>
+
+<div class="module-form-page">
+    <div class="module-return">
+        <a href="{{ route('students.index') }}">
+            <i data-lucide="arrow-left"></i>
+            <span>Return to Students</span>
+        </a>
+    </div>
+
+    <x-card title="Add New Student">
+        <form action="{{ route('students.store') }}" method="POST" class="module-form">
+            @csrf
+
+            <x-form-input name="student_number" label="Student Number" placeholder="e.g. STU001" required />
+            <x-form-input name="name" label="Full Name" placeholder="e.g. Jane Smith" required />
+            <x-form-input name="email" label="Email Address" type="email" placeholder="e.g. jane@university.edu" required />
+            <x-form-select name="department_id" label="Department" :options="$departmentOptions" placeholder="-- No Department --" />
+
+            <x-button type="submit" variant="primary">Create Student</x-button>
+        </form>
+    </x-card>
 </div>
 
-<div class="card" style="max-width: 520px;">
-    <form action="{{ route('students.store') }}" method="POST">
-        @csrf
-        
-        <div class="form-group">
-            <label>Student Number <span style="color: var(--danger)">*</span></label>
-            <input type="text" name="student_number" class="form-control" value="{{ old('student_number') }}" required>
-            @error('student_number') <p style="color: var(--danger); font-size: 0.8rem; margin: 4px 0 0;">{{ $message }}</p> @enderror
-        </div>
-
-        <div class="form-group">
-            <label>Full Name <span style="color: var(--danger)">*</span></label>
-            <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
-            @error('name') <p style="color: var(--danger); font-size: 0.8rem; margin: 4px 0 0;">{{ $message }}</p> @enderror
-        </div>
-
-        <div class="form-group">
-            <label>Email Address <span style="color: var(--danger)">*</span></label>
-            <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
-            @error('email') <p style="color: var(--danger); font-size: 0.8rem; margin: 4px 0 0;">{{ $message }}</p> @enderror
-        </div>
-
-        <div class="form-group">
-            <label>Department ID</label>
-            <input type="number" name="department_id" class="form-control" placeholder="e.g. 1">
-        </div>
-
-        <div class="form-actions" style="display: flex; gap: 10px; margin-top: 24px;">
-            <button type="submit" class="btn btn-primary">Save Student</button>
-            <a href="{{ route('students.index') }}" class="btn btn-secondary">Cancel</a>
-        </div>
-    </form>
-</div>
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="{{ url('css/modules.css') }}">
+    <link rel="stylesheet" href="{{ url('css/students-create.css') }}">
+@endpush

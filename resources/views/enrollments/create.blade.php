@@ -1,22 +1,31 @@
-{{--
-    YOUR TASK (W10):  form to enroll a student in a course.
+@extends('layouts.layout')
+@section('title', 'Add Enrollment')
+@section('content')
 
-    This is the special one: the form combines data from TWO sources at once
-    (a list of students AND a list of courses).
+<div class="module-form-page">
+    <div class="module-return">
+        <a href="{{ route('enrollments.index') }}">
+            <i data-lucide="arrow-left"></i>
+            <span>Return to Enrollments</span>
+        </a>
+    </div>
 
-    The controller passes in:
-        $studentOptions  — an array of [id => name]            (for a dropdown)
-        $courseOptions   — an array of [id => "CODE — Title"]   (for a dropdown)
+    <x-card title="Add New Enrollment">
+        <form action="{{ route('enrollments.store') }}" method="POST" class="module-form">
+            @csrf
 
-    Submit with:
-        method="POST"  action="{{ route('enrollments.store') }}"  @csrf
+            <x-form-select name="student_id" label="Student" :options="$studentOptions" placeholder="-- Select Student --" required />
+            <x-form-select name="course_id" label="Course" :options="$courseOptions" placeholder="-- Select Course --" required />
+            <x-form-input name="grade" label="Grade" placeholder="e.g. A, B+, 90 (optional)" />
 
-    Validated fields (use these as the field name=""):
-        student_id  (required)
-        course_id   (required)
-        grade       (optional)
+            <x-button type="submit" variant="primary">Create Enrollment</x-button>
+        </form>
+    </x-card>
+</div>
 
-    Build two <select> dropdowns (one per array) plus a grade text input.
+@endsection
 
-    TODO: build the form here.
---}}
+@push('styles')
+    <link rel="stylesheet" href="{{ url('css/modules.css') }}">
+    <link rel="stylesheet" href="{{ url('css/enrollments-create.css') }}">
+@endpush

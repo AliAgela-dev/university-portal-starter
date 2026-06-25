@@ -1,48 +1,77 @@
 @extends('layouts.layout')
-
-@section('title', 'Students List')
-
+@section('title', 'Students')
 @section('content')
-<div class="page-head">
-    <h1>Students List</h1>
-    <a href="{{ route('students.create') }}" class="btn btn-primary">New Student</a>
+
+<div class="module-section">
+
+    <div class="module-header">
+        <div class="module-logo">
+            <i data-lucide="users"></i>
+        </div>
+        <div>
+            <p class="module-title">Students</p>
+            <p class="module-desc">Manage enrolled students and their information</p>
+        </div>
+    </div>
+
+    <div class="search-and-create-card">
+        <div class="search-input-wrapper">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="module-search" class="search-input" placeholder="Search students...">
+        </div>
+        <x-button :href="route('students.create')" variant="primary" class="btn-add">
+            <i data-lucide="plus"></i>
+            Add Student
+        </x-button>
+    </div>
+
+    <div class="module-display-card">
+        <div class="display-card-header">
+            <span class="display-card-title">All Students</span>
+            <span class="display-card-count">{{ count($students) }}</span>
+        </div>
+
+        @forelse($students as $student)
+            <div class="module-row">
+                <div class="module-row-icon">
+                    <i data-lucide="user"></i>
+                </div>
+                <div class="module-row-info">
+                    <span class="module-row-name">{{ $student->getName() }}</span>
+                    <div class="module-row-meta">
+                        #{{ $student->getStudentNumber() }} · {{ $student->getEmail() }}
+                        @if($student->getDepartmentName())
+                            · {{ $student->getDepartmentName() }}
+                        @endif
+                    </div>
+                </div>
+                <div class="module-row-actions">
+                    <a href="{{ route('students.edit', $student->getId()) }}" class="btn-edit">
+                        <i data-lucide="pencil"></i>
+                    </a>
+                    <form action="{{ route('students.destroy', $student->getId()) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn-delete">
+                            <i data-lucide="trash-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        @empty
+            <p class="module-empty">No students found.</p>
+        @endforelse
+    </div>
+
 </div>
 
-<div class="card" style="padding: 0;">
-    <table style="width: 100%; border-collapse: collapse; text-align: left;">
-        <thead>
-            <tr style="background: #fafbfe; color: #6b7688; text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.04em;">
-                <th style="padding: 14px; border-bottom: 1px solid #e3e8f0;">Student Number</th>
-                <th style="padding: 14px; border-bottom: 1px solid #e3e8f0;">Name</th>
-                <th style="padding: 14px; border-bottom: 1px solid #e3e8f0;">Email</th>
-                <th style="padding: 14px; border-bottom: 1px solid #e3e8f0;">Department</th>
-                <th style="padding: 14px; border-bottom: 1px solid #e3e8f0; text-align: right;">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse($students as $student)
-                <tr style="border-bottom: 1px solid #e3e8f0;">
-                    <td style="padding: 14px;"><strong>{{ $student->getStudentNumber() }}</strong></td>
-                    <td style="padding: 14px;">{{ $student->getName() }}</td>
-                    <td style="padding: 14px;">{{ $student->getEmail() }}</td>
-                    <td style="padding: 14px;"><span style="background: #eef1f8; color: #38415a; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">{{ $student->getDepartmentName() }}</span></td>
-                    <td style="padding: 14px; text-align: right;">
-                        <a href="{{ route('students.edit', $student->getId()) }}" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Edit</a>
-                        <form action="{{ route('students.destroy', $student->getId()) }}" method="POST" style="display: inline; margin-left: 4px;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem; border: none; border-radius: 8px; cursor: pointer;" onclick="return confirm('Are you sure?')">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="5" style="padding: 32px; text-align: center; color: #6b7688;">
-                        No students found. Click "New Student" to add records!
-                    </td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
-</div>
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="{{ url('css/modules.css') }}">
+    <link rel="stylesheet" href="{{ url('css/students-index.css') }}">
+@endpush
+
+@push('scripts')
+    <script src="{{ url('js/modules.js') }}"></script>
+@endpush

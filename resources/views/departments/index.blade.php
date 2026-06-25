@@ -102,7 +102,7 @@
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="{{ url('css/Departments.css') }}">
+    <link rel="stylesheet" href="{{ url('css/departments-index.css') }}">
 @endpush
 
 @push('scripts')
