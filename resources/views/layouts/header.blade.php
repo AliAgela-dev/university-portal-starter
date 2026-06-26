@@ -1,3 +1,4 @@
+```blade
 <header>
   <div class="logo">
     <a href="#">
@@ -6,7 +7,7 @@
   </div>
 
   <nav>
-    <a href="#">
+    <a href="{{ route('dashboard') }}">
       <i class="fa-solid fa-chart-column"></i> Dashboard
     </a>
 
@@ -30,7 +31,6 @@
       <i class="fa-solid fa-users"></i> Enrollments
     </a>
 
-
     <div class="profile-dropdown">
       <input type="checkbox" id="profileToggle">
 
@@ -45,13 +45,14 @@
         </a>
 
         <form action="{{ route('logout') }}" method="POST">
-    @csrf
-    <button type="submit">
-        <i class="fa-solid fa-right-from-bracket"></i> Logout
-    </button>
-</form>
-
+          @csrf
+          <button type="submit">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </button>
+        </form>
       </div>
     </div>
   </nav>
 </header>
+```
+
