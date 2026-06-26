@@ -1,18 +1,83 @@
-{{--
-    YOUR TASK (W10):  form to edit an existing student.
+@extends('layouts.app')
 
-    The controller passes in:
-        $student            — an App\DTOs\StudentDTO (getters listed in students/index)
-        $departmentOptions  — an array of [id => name]
 
-    Submit with:
-        method="POST" + @csrf + @method('PUT')
-        action="{{ route('students.update', $student->getId()) }}"
+@section('page-title','Edit Student')
 
-    Pre-fill each input from the DTO (e.g. :value="$student->getName()") and
-    pre-select the student's current department ($student->getDepartmentId()).
 
-    Validated fields:  name, email, student_number, department_id
+@section('content')
 
-    TODO: build the form here.
---}}
+
+<x-button 
+    type="back"
+    :href="route('students.index')"
+/>
+
+
+
+<x-card title="Edit Student">
+
+
+<x-form 
+    action="{{ route('students.update', $student->getId()) }}"
+    method="POST">
+
+
+@csrf
+
+@method('PUT')
+
+
+
+<x-form-input
+    name="name"
+    label="Name"
+    type="text"
+    value="{{ $student->getName() }}"
+    placeholder="Enter student name"
+/>
+
+
+
+<x-form-input
+    name="email"
+    label="Email"
+    type="email"
+    value="{{ $student->getEmail() }}"
+    placeholder="Enter student email"
+/>
+
+
+
+<x-form-input
+    name="student_number"
+    label="Student Number"
+    type="text"
+    value="{{ $student->getStudentNumber() }}"
+    placeholder="Enter student number"
+/>
+
+
+
+<x-form-select
+    name="department_id"
+    label="Department"
+    :options="$departmentOptions"
+    value="{{ $student->getDepartmentId() }}"
+    placeholder="Select Department"
+/>
+
+
+
+<x-button type="submit">
+Update Student
+</x-button>
+
+
+
+</x-form>
+
+
+</x-card>
+
+
+@endsection

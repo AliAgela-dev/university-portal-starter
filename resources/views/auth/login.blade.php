@@ -1,68 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign in · University Portal</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <style>
-        .auth-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
-        .auth-card { width: 100%; max-width: 380px; }
-        .auth-head { text-align: center; margin-bottom: 18px; }
-        .auth-head h1 { margin: 0 0 4px; font-size: 1.5rem; }
-        .auth-head p { margin: 0; color: var(--muted); }
-        .auth-error { background: #fde8e6; border: 1px solid #f3b7b1; color: #a52f25; border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; }
-        .auth-demo { margin-top: 16px; text-align: center; font-size: 0.85rem; color: var(--muted); }
-        .remember { display: flex; align-items: center; gap: 8px; }
-        .remember input { width: auto; }
-        .remember label { margin: 0; font-weight: 500; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login – University Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
-    <div class="auth-wrap">
-        <div class="auth-card">
-            <div class="auth-head">
-                <h1>🎓 University Portal</h1>
-                <p>Sign in to continue</p>
+
+<div class="login-card">
+
+    {{-- Left Panel --}}
+    <div class="login-left">
+        <div class="crest"><i class="fa-solid fa-building-columns"></i></div>
+        <h1>University Portal</h1>
+        <p class="tagline">Academic Excellence</p>
+        <div class="left-divider"></div>
+        <p class="left-quote">Empowering students, faculty, and staff through a unified digital campus.</p>
+    </div>
+
+    {{-- Right Panel --}}
+    <div class="login-right">
+        <div class="top-bar"></div>
+        <h2>Welcome back</h2>
+        <p class="subtitle">Log in to access your portal</p>
+
+        {{-- Error Message --}}
+        @if ($errors->any())
+            <div class="alert-error">
+                {{ $errors->first() }}
             </div>
+        @endif
 
-            <div class="card">
-                <div class="card-body">
-                    @if ($errors->any())
-                        <div class="auth-error">{{ $errors->first() }}</div>
-                    @endif
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input id="email" type="email" name="email" value="{{ old('email') }}"
-                                   class="form-control" required autofocus>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input id="password" type="password" name="password" class="form-control" required>
-                        </div>
-
-                        <div class="form-group remember">
-                            <input id="remember" type="checkbox" name="remember" value="1">
-                            <label for="remember">Remember me</label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Sign in</button>
-                    </form>
+            <div class="field">
+                <label for="email">University Email</label>
+                <div class="input-wrap">
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="username@limu.edu.ly"
+                        value="{{ old('email') }}"
+                        required
+                        autofocus
+                    />
                 </div>
             </div>
 
-            <p style="margin-top: 16px; text-align: center; font-size: 0.9rem; color: var(--muted);">
-                No account yet? <a href="{{ route('register') }}">Sign up</a>
+            <div class="field">
+                <label for="password">Password</label>
+                <div class="input-wrap">
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label class="check-label">
+                    <input type="checkbox" name="remember" /> Remember me
+                </label>
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-login">Login</button>
+
+            <p class="bottom-text">
+                Don't have an account?
+                <a href="{{ route('register') }}" class="bottom-link">Sign up</a>
             </p>
-            <p class="auth-demo">Demo account — <strong>admin@uni.edu</strong> / <strong>password</strong></p>
-        </div>
+
+        </form>
+
+        </form>
     </div>
+
+</div>
+
 </body>
 </html>

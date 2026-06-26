@@ -20,7 +20,7 @@ class AuthController extends Controller
         return []; // login + logout must be reachable without being logged in
     }
 
-    /** Show the login form (or bounce to the dashboard if already signed in). */
+    /** Show the login form (or bounce to departments if already signed in). */
     public function showLogin()
     {
         if (Auth::check()) {
@@ -50,7 +50,7 @@ class AuthController extends Controller
             ->onlyInput('email');
     }
 
-    /** Show the registration form (or bounce to the dashboard if already in). */
+    /** Show the registration form (or bounce to departments if already in). */
     public function showRegister()
     {
         if (Auth::check()) {

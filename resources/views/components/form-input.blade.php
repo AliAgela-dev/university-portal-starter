@@ -1,20 +1,24 @@
-{{--
-    YOUR TASK (W14 — Blade Components):  build the <x-form-input> component.
+@props([
+    'name',
+    'label',
+    'type' => 'text',
+    'placeholder' => '',
+    'value' => null,
+])
 
-    You will use it inside the create/edit forms, e.g.:
-        <x-form-input name="email" label="Email" type="email" required />
-        <x-form-input name="name"  label="Full Name" :value="$student->getName()" required />
+<div style="margin-bottom: 15px;">
+    <label for="{{ $name }}" style="display: block; margin-bottom: 5px; color: #1a1a1a; font-weight: bold;">
+        {{ $label }}
+    </label>
 
-    Suggested props:
-        name, label, type (default 'text'), value (default ''), required (default false)
-
-    It should render a <label> and an <input>. Two helpful tips:
-        - keep the user's input after a validation error:
-              value="{{ old($name, $value) }}"
-        - show the validation message for this field:
-              @error($name) ... {{ $message }} ... @enderror
-
-    Provided CSS classes: .form-group, .form-control, .form-error
-
-    TODO: build the component here.
---}}
+    <input
+        type="{{ $type }}"
+        name="{{ $name }}"
+        id="{{ $name }}"
+        value="{{ old($name, $value) }}"
+        placeholder="{{ $placeholder }}"
+        style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; box-sizing: border-box; transition: border-color 0.2s, box-shadow 0.2s;"
+        onfocus="this.style.borderColor='#F2B33D'; this.style.boxShadow='0 0 0 3px rgba(242, 179, 61, 0.15)';"
+        onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+    >
+</div>

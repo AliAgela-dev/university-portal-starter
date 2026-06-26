@@ -1,20 +1,12 @@
 <?php
+// app/Http/Controllers/Controller.php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-abstract class Controller implements HasMiddleware
+abstract class Controller
 {
-    /**
-     * Middleware applied to every controller that extends this base.
-     *
-     * The whole portal requires a logged-in user, so the `auth` middleware is
-     * attached here once. Public controllers (e.g. AuthController) override
-     * this method and return an empty array.
-     */
-    public static function middleware(): array
-    {
-        return ['auth'];
-    }
+    //
 }

@@ -1,47 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard · University Portal</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-<body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <span class="brand">🎓 University Portal</span>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <span class="muted">Signed in as <strong>{{ auth()->user()->name }}</strong></span>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="btn btn-secondary">Log out</button>
-                </form>
-            </div>
-        </div>
-    </header>
+@extends('layouts.app')
 
-    <main class="container page">
-        <div class="page-head">
-            <h1>Welcome back, {{ auth()->user()->name }} 👋</h1>
-        </div>
+@section('page-title', 'Dashboard')
 
-        <div class="card">
-            <div class="card-body">
-                <p>You are signed in. Jump into a module:</p>
-                <p style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px;">
-                    <a class="btn btn-primary" href="/departments">Departments</a>
-                    <a class="btn btn-primary" href="/students">Students</a>
-                    <a class="btn btn-primary" href="/courses">Courses</a>
-                    <a class="btn btn-primary" href="/professors">Professors</a>
-                    <a class="btn btn-primary" href="/enrollments">Enrollments</a>
-                </p>
-                <p class="muted" style="margin-top: 14px; font-size: 0.85rem;">
-                    A link 404s until you have added its route and built its view.
-                </p>
-            </div>
-        </div>
-    </main>
-</body>
-</html>
+@section('content')
+<h1 class="page-title text-center"><i class="fa-solid fa-gauge"></i> Dashboard</h1>
+<x-card>
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;">
+
+    <div style="background:#fff; border-radius:15px; padding:25px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+        <i class="fa-regular fa-building" style="font-size:35px; color:#3B82F6;"></i>
+        <h3 style="color:#3B82F6;">Departments</h3>
+        <h1 style="color:#3B82F6;">{{ $departmentsCount }}</h1>
+    </div>
+
+    <div style="background:#fff; border-radius:15px; padding:25px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+        <i class="fa-solid fa-user-graduate" style="font-size:35px; color:#10B981;"></i>
+        <h3 style="color:#10B981;">Students</h3>
+        <h1 style="color:#10B981;">{{ $studentsCount }}</h1>
+    </div>
+
+    <div style="background:#fff; border-radius:15px; padding:25px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+        <i class="fa-solid fa-book" style="font-size:35px; color:#F59E0B;"></i>
+        <h3 style="color:#F59E0B;">Courses</h3>
+        <h1 style="color:#F59E0B;">{{ $coursesCount }}</h1>
+    </div>
+
+    <div style="background:#fff; border-radius:15px; padding:25px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+        <i class="fa-solid fa-person-chalkboard" style="font-size:35px; color:#EF4444;"></i>
+        <h3 style="color:#EF4444;">Professors</h3>
+        <h1 style="color:#EF4444;">{{ $professorsCount }}</h1>
+    </div>
+
+    <div style="background:#fff; border-radius:15px; padding:25px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+        <i class="fa-solid fa-users" style="font-size:35px; color:#8B5CF6;"></i>
+        <h3 style="color:#8B5CF6;">Enrollments</h3>
+        <h1 style="color:#8B5CF6;">{{ $enrollmentsCount }}</h1>
+    </div>
+
+</div>
+
+<hr style="margin:35px 0;">
+
+<div style="display:grid; grid-template-columns:2fr 1fr; gap:25px; align-items:start;">
+
+    <div style="background:#fff8e8; border-left:5px solid #F59E0B; padding:25px; border-radius:12px;">
+        <h3 style="margin-bottom:10px;">
+            <i class="fa-solid fa-circle-info" style="color:#F59E0B;"></i>
+            System Overview
+        </h3>
+
+        <p style="line-height:1.8; color:#333;">
+            This dashboard provides a quick overview of the university portal.
+            It displays live statistics from the database, so the numbers update
+            automatically when records are added, edited, or deleted.
+        </p>
+    </div>
+
+    <div style="background:#fff; padding:25px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+        <h3 style="margin-bottom:15px;">Main Modules</h3>
+
+        <p><i class="fa-regular fa-building" style="color:#3B82F6;"></i> Department Management</p>
+        <p><i class="fa-solid fa-user-graduate" style="color:#10B981;"></i> Student Management</p>
+        <p><i class="fa-solid fa-book" style="color:#F59E0B;"></i> Course Management</p>
+        <p><i class="fa-solid fa-person-chalkboard" style="color:#EF4444;"></i> Professor Management</p>
+        <p><i class="fa-solid fa-users" style="color:#8B5CF6;"></i> Enrollment Management</p>
+    </div>
+
+</div>
+
+</x-card>
+
+@endsection

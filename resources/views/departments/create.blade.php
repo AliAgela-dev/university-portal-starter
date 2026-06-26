@@ -1,13 +1,32 @@
 {{--
     YOUR TASK (W10):  form to create a new department.
+--}}
 
-    Submit the form with:
-        method="POST"
-        action="{{ route('departments.store') }}"
+@extends('layouts.app')
+
+@section('your-title', 'Create Department')
+
+@section('content')
+
+<x-button type="back" :href="route('departments.index')" />
+
+<x-card title="Create New Department">
+    <x-form action="{{ route('departments.store') }}" method="POST">
         @csrf
 
-    The controller validates these fields (use them as the input name=""):
-        name   (required)
+        <x-form-input
+            name="name"
+            label="Department Name"
+            type="text"
+            placeholder="e.g. Computer Science"
+            required
+        />
 
-    TODO: build the form here.
---}}
+        <x-button type="submit">
+            Save Department
+        </x-button>
+
+    </x-form>
+</x-card>
+
+@endsection

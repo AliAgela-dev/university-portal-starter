@@ -1,20 +1,77 @@
-{{--
-    YOUR TASK (W10):  form to create a new student.
+@extends('layouts.app')
 
-    The controller passes in:
-        $departmentOptions  — an array of  [id => name]  for a dropdown
 
-    Submit with:
-        method="POST"  action="{{ route('students.store') }}"  @csrf
+@section('page-title','Create Student')
 
-    Validated fields (use these as input name=""):
-        name            (required)
-        email           (required, must be an email)
-        student_number  (optional)
-        department_id   (optional)
 
-    For department_id, build a <select> by looping $departmentOptions:
-        @foreach ($departmentOptions as $id => $name) ... @endforeach
+@section('content')
 
-    TODO: build the form here.
---}}
+
+<x-button 
+    type="back"
+    :href="route('students.index')"
+/>
+
+
+
+<x-card title="Create Student">
+
+
+<x-form 
+    action="{{ route('students.store') }}"
+    method="POST">
+
+
+@csrf
+
+
+
+<x-form-input
+    name="name"
+    label="Name"
+    type="text"
+    placeholder="Enter student name"
+/>
+
+
+
+<x-form-input
+    name="email"
+    label="Email"
+    type="email"
+    placeholder="Enter student email"
+/>
+
+
+
+<x-form-input
+    name="student_number"
+    label="Student Number"
+    type="text"
+    placeholder="Enter student number"
+/>
+
+
+
+<x-form-select
+    name="department_id"
+    label="Department"
+    :options="$departmentOptions"
+    placeholder="Select Department"
+/>
+
+
+
+<x-button type="submit">
+    Save Student
+</x-button>
+
+
+
+</x-form>
+
+
+</x-card>
+
+
+@endsection
