@@ -3,8 +3,8 @@
 @section('page-title', 'Dashboard')
 
 @section('content')
-
-<x-card title="Dashboard">
+<h1 class="page-title text-center"><i class="fa-solid fa-gauge"></i> Dashboard</h1>
+<x-card>
 
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;">
 

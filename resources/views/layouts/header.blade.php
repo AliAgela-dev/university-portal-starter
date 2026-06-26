@@ -1,7 +1,6 @@
-```blade
 <header>
   <div class="logo">
-    <a href="#">
+    <a href="{{ route('dashboard') }}">
       <i class="fa-solid fa-graduation-cap"></i> university portal
     </a>
   </div>
